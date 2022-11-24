@@ -1,13 +1,60 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Signup = () => {
+
+    const { registerForm, updateProfileUser, googleProvider } = useContext(AuthContext);
+    const provider = new GoogleAuthProvider();
+    const navigate = useNavigate()
+
+    const handleRegister = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const name = form.name.value;
+
+        registerForm(email, password)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                updateProfileUser(name)
+                    .then(() => {
+                        navigate('/')
+                        toast.success("Registation Successfull")
+                    })
+                    .catch((error) => {
+                        toast.error("username update failed")
+                    })
+            })
+            .catch((error) => {
+                toast.error("Registation failed")
+
+            });
+    }
+
+    const handleGoogleProvider = () => {
+        googleProvider(provider)
+            .then(result => {
+                const user = result.user;
+                navigate('/')
+                console.log(user);
+                toast.success("Registation Successfull")
+            })
+            .catch(error => {
+                toast.error("Registation failed")
+            })
+    }
+
     return (
-        <div className="bg-gradient-to-r from-[#e2863bbe] to-[#ec5d3dbb] py-20 rounded-lg">
+        <div className="bg-gradient-to-r from-[#f3c3b8bb] to-[#dfcec0be] py-20 rounded-lg">
             <div className="hero">
                 <div className="hero-content flex-col">
                     <div className="card flex-shrink-0 w-full bg-white rounded-md">
-                        <form className="card-body">
+                        <form onSubmit={handleRegister} className="card-body">
                             <h2 className='text-center font-bold text-2xl text-[rgb(156,44,119)] pb-4'>Signup Form</h2>
                             <div className="form-control">
                                 <input type="text" placeholder="Your Name" className="input input-bordered rounded-md" name='name' />
@@ -23,10 +70,10 @@ const Signup = () => {
                             </div>
 
                             <div className='text-center mt-2'>
-                                <small>Have an account <Link className='font-medium label-text-alt link link-hover' to='/login'> Login</Link></small>
+                                <small>Have an account? <Link className='font-medium label-text-alt link link-hover' to='/login'> Login</Link></small>
                             </div>
                             <div className="divider">OR</div>
-                            <button className='btn btn-outline rounded-md'>continue with google</button>
+                            <button onClick={handleGoogleProvider} className='btn btn-outline rounded-md'>continue with google</button>
                         </form>
                     </div>
                 </div>
