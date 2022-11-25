@@ -5,12 +5,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { user, loginForm, googleProvider } = useContext(AuthContext);
+    const { loginForm, googleProvider, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const provider = new GoogleAuthProvider();
+    const from = location.state?.from?.pathname || '/';
 
-    const from = location.state?.from?.pathname || "/";
 
 
     const handleLogin = (e) => {
@@ -23,12 +23,17 @@ const Login = () => {
         loginForm(email, password)
             .then((result) => {
 
-                navigate(from, { replace: true });
+                if (result.user) {
+                    navigate(from, { replace: true });
+                }
                 toast.success("Login Successfull")
             })
             .catch((error) => {
                 toast.error('failed login!')
-            });
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
     const handleGoogle = () => {

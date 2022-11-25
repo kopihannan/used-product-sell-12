@@ -28,11 +28,13 @@ const Header = () => {
                             }
                         </ul>
                     </div>
-                    <Link className="text-[#E14D2A] text-2xl font-bold">Quicker</Link>
+                    <Link to='/' className="text-[#E14D2A] text-2xl font-bold">Quicker</Link>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
                         <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/admin'>Admin Panel</Link></li>
+                        <li><Link to='/addproduct'>Add Product</Link></li>
                         {
                             user?.uid? <button onClick={hangleLogout} className='btn'>Logout</button> : <li><Link to='/login'>Login</Link></li>
                         }

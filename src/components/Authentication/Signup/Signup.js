@@ -16,6 +16,9 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
         const name = form.name.value;
+        const select = form.radio.value;
+
+        
 
         registerForm(email, password)
             .then((result) => {
@@ -23,6 +26,7 @@ const Signup = () => {
                 console.log(user);
                 updateProfileUser(name)
                     .then(() => {
+                        allUsers(name, email, select)
                         navigate('/')
                         toast.success("Registation Successfull")
                     })
@@ -49,6 +53,23 @@ const Signup = () => {
             })
     }
 
+
+    const allUsers = (name, email, select) => {
+        const users = { name, email, select };
+        fetch('http://localhost:5000/user', {
+
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(users)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+            })
+    }
+
     return (
         <div className="bg-gradient-to-r from-[#f3c3b8bb] to-[#dfcec0be] py-20 rounded-lg">
             <div className="hero">
@@ -65,6 +86,11 @@ const Signup = () => {
                             <div className="form-control">
                                 <input type="password" placeholder="Your Password" className="input rounded-md input-bordered w-full" name='password' />
                             </div>
+                            <div>
+                                <input type="radio" name="radio" value="buyer" /><span className='pl-2 font-medium'>Buyer</span> <br />
+                                <input type="radio" name="radio" value="seller" /><span className='pl-2 font-medium'>Seller</span>
+                            </div>
+
                             <div className="form-control mt-3">
                                 <button className="bg-[rgb(156,44,119)] hover:bg-[rgb(131,29,97)] py-3 w-full text-white rounded-md">Signup</button>
                             </div>
