@@ -6,7 +6,7 @@ import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Signup = () => {
 
-    const { registerForm, updateProfileUser, googleProvider } = useContext(AuthContext);
+    const { registerForm, updateProfileUser, googleProvider, setLoading } = useContext(AuthContext);
     const provider = new GoogleAuthProvider();
     const navigate = useNavigate()
 
@@ -24,11 +24,12 @@ const Signup = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                updateProfileUser(name)
+                updateProfileUser(name, select)
                     .then(() => {
                         allUsers(name, email, select)
                         navigate('/')
-                        toast.success("Registation Successfull")
+                        toast.success("Registation Successfull");
+                        setLoading(false)
                     })
                     .catch((error) => {
                         toast.error("username update failed")

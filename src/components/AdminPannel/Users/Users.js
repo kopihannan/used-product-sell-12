@@ -12,7 +12,18 @@ const Users = () => {
         }
     });
 
-
+    const handleVerified = id => {
+        fetch(`http://localhost:5000/user/admin/${id}`, {
+            method: 'PUT', 
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.modifiedCount > 0){
+                toast.success('Make verified successful.')
+                refetch();
+            }
+        })
+    }
 
 
     const handleDelete = (id) => {
@@ -35,7 +46,6 @@ const Users = () => {
     return (
         <div>
             <div>
-                <h2 className="text-3xl">All Users</h2>
                 <div className="overflow-x-auto">
                     <table className="table w-full">
                         <thead>
@@ -44,6 +54,7 @@ const Users = () => {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Category</th>
+                                <th>Verified</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -54,6 +65,7 @@ const Users = () => {
                                     <td>{users.name}</td>
                                     <td>{users.email}</td>
                                     <td>{users.select}</td>
+                                    <td>{ users?.isVerified!== 'verified' &&  <button onClick={() => handleVerified(users._id)} className='btn btn-xs btn-error'>Pending</button>}</td>
                                     <td>
                                         <button onClick={()=> handleDelete(users._id)} className="btn btn-circle btn-outline">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>

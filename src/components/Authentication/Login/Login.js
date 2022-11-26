@@ -25,6 +25,7 @@ const Login = () => {
 
                 if (result.user) {
                     navigate(from, { replace: true });
+                    setLoading(false);
                 }
                 toast.success("Login Successfull")
             })

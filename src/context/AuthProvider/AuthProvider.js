@@ -35,6 +35,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return signInWithPopup(auth, provider)
     }
+    
 
     //state change user
     useEffect(() => {

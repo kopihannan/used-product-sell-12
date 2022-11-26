@@ -10,7 +10,7 @@ const CategoiresCard = ({ categorie, handleCategori }) => {
                     <img className='w-80 cursor-pointer' src={image} alt="" />
                 </div>
                 <h3>{title}</h3>
-                <Link to={`/categories/${category}`}>View all</Link>
+                <Link to={`/categorie/${category}`}>View all</Link>
             </div>
         </div>
     );
