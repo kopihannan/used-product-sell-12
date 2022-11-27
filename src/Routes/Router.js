@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AddProduct from "../components/AddProducts/AddProduct";
 import MainAdmin from "../components/AdminPannel/MainAdmin/MainAdmin";
 import Users from "../components/AdminPannel/Users/Users";
+import Advertise from "../components/AdvertisingSection/Advertise";
 import Login from "../components/Authentication/Login/Login";
 import Signup from "../components/Authentication/Signup/Signup";
 import BuyerBooked from "../components/BuyerBooked/BuyerBooked";
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
                 path: '/categorie/:category', element: <PrivateRouter><CategoryByProducts></CategoryByProducts></PrivateRouter>,
                 loader: ({ params }) => fetch(`http://localhost:5000/categorie/${params.category}`),
             },
+            {
+                path: '/ads', element: <Advertise></Advertise>
+            },
+
 
             {
                 path: '/admin', element: <MainAdmin></MainAdmin>,

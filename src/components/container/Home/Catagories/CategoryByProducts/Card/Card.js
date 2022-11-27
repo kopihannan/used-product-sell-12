@@ -10,7 +10,7 @@ const Card = ({ product, setBooking }) => {
         <div className='my-20'>
             <div className='border w-96 mx-auto h-[400px] px-4 shadow rounded relative'>
                 <div className='flex items-center pt-3'>
-                    <h1 className='font-medium '>Seller Name: {sellername}</h1>
+                    <h1 className='font-medium '>{sellername}</h1>
                     {
                         isVerify? <img className='w-5 h-5 ml-1' src={verified} alt=""/>: ""
                     }

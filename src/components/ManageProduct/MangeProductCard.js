@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MangeProductCard = ({ seller, handleDelete }) => {
+const MangeProductCard = ({ seller, handleDelete, handleAdvertise }) => {
     const { image, resalePrice, title, _id } = seller;
     console.log(seller);
     return (
@@ -19,6 +19,9 @@ const MangeProductCard = ({ seller, handleDelete }) => {
                 </td>
                 <td>unsold</td>
                 <td>{resalePrice}</td>
+                <th>
+                    <button onClick={()=> handleAdvertise (seller)} className="btn btn-success hover:bg-green-700 text-white btn-xs">Advertise</button>
+                </th>
                 <th>
                     <button onClick={()=> handleDelete (_id)} className="btn btn-error hover:bg-red-700 text-white btn-xs">Delete</button>
                 </th>

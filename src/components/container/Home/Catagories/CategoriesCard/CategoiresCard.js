@@ -18,7 +18,7 @@ const CategoiresCard = ({ categorie, handleCategori }) => {
             </div> */}
 
 
-            <div className="card w-96 shadow image-full">
+            <div className="card shadow image-full">
                 <figure><img  src={image} alt="Shoes" /></figure>
                 <div className="card-body flex justify-center items-center">
                     <div>
