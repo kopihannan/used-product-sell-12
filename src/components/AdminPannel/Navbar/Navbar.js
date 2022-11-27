@@ -28,14 +28,14 @@ const Navbar = () => {
 
                         {
                             isType && <>
-                            <li><Link to='/admin/addproduct' className='btn btn-accent rounded-md'>Add Product</Link></li>
-                            <li><Link to='/admin/manageproduct' className='btn btn-accent rounded-md ml-5'>Manage Product</Link></li>
+                                <li><Link to='/admin/addproduct' className='btn btn-accent rounded-md'>Add Product</Link></li>
+                                <li><Link to='/admin/manageproduct' className='btn btn-accent rounded-md ml-5'>Manage Product</Link></li>
 
                             </>
                         }
-
-                        
-
+                        {
+                            !isType && <li><Link to='/admin/myorder' className='btn btn-accent rounded-md'>My Orders</Link></li>
+                        }
                     </ul>
                 </div>
             </div>

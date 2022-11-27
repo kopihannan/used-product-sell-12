@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import VerifySeller from '../AllHocks/SellerProvider/VerifySeller';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
+    const [isVerify] = VerifySeller(user?.email);
+
+
     const navigate = useNavigate()
 
     const handleAddProduct = (e) => {
@@ -24,15 +28,15 @@ const AddProduct = () => {
         const number = form.number.value;
         const message = form.message.value;
 
-        products(sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message);
+        products(sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify);
         form.reset();
         toast.success("Add Product Succesfully")
         navigate('/admin/manageproduct')
     }
 
 
-    const products = (sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number) => {
-        const products = { sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition , number};
+    const products = (sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify) => {
+        const products = { sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify};
         fetch('http://localhost:5000/categorie', {
 
             method: 'POST',

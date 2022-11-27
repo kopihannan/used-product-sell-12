@@ -4,6 +4,7 @@ import MainAdmin from "../components/AdminPannel/MainAdmin/MainAdmin";
 import Users from "../components/AdminPannel/Users/Users";
 import Login from "../components/Authentication/Login/Login";
 import Signup from "../components/Authentication/Signup/Signup";
+import BuyerBooked from "../components/BuyerBooked/BuyerBooked";
 import CategoryByProducts from "../components/container/Home/Catagories/CategoryByProducts/CategoryByProducts";
 import Home from "../components/container/Home/Home";
 import ManageProduct from "../components/ManageProduct/ManageProduct";
@@ -40,7 +41,10 @@ const router = createBrowserRouter([
                         path: '/admin/addproduct', element: <SellerRouter> <AddProduct></AddProduct></SellerRouter>
                     },
                     {
-                        path: '/admin/manageproduct', element: <ManageProduct></ManageProduct>
+                        path: '/admin/manageproduct', element: <SellerRouter><ManageProduct></ManageProduct></SellerRouter> 
+                    },
+                    {
+                        path: '/admin/myorder', element: <BuyerBooked></BuyerBooked>
                     },
     
                 ]
