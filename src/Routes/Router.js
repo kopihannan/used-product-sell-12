@@ -9,6 +9,7 @@ import BuyerBooked from "../components/BuyerBooked/BuyerBooked";
 import CategoryByProducts from "../components/container/Home/Catagories/CategoryByProducts/CategoryByProducts";
 import Home from "../components/container/Home/Home";
 import ManageProduct from "../components/ManageProduct/ManageProduct";
+import Payment from "../components/Payment/Payment";
 import Root from "../components/Root/Root";
 import AdminRouter from "../PrivateRoutes/AdminRouter";
 import PrivateRouter from "../PrivateRoutes/PrivateRouter";
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
                     {
                         path: '/admin/myorder', element: <BuyerBooked></BuyerBooked>
                     },
+
+                    {
+                        path: '/admin/payment/:id', element: <Payment></Payment>,
+                        loader: ({params})=> fetch(`http://localhost:5000/booking/${params.id}`)
+                    }
     
                 ]
             }

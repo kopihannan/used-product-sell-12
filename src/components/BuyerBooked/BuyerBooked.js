@@ -7,18 +7,17 @@ import BuyerBookCard from './BuyerBookCard';
 const BuyerBooked = () => {
     const { user } = useContext(AuthContext)
 
-    const { data: myOrders = [], refetch, isLoading } = useQuery({
-        queryKey: ['myOrders'],
+    const { data: myOrders = [] } = useQuery({
+        queryKey: ['booking', user?.email],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/booking/${user?.email}`);
+            const res = await fetch(`http://localhost:5000/booking?email=${user?.email}`);
             const data = await res.json();
-            return data
+            return data;
         }
-    });
-
-    if (isLoading) {
-        return <Spinner></Spinner>
-    }
+    })
+    // if (isLoading) {
+    //     return <Spinner></Spinner>
+    // }
 
     return (
         <div>
@@ -28,9 +27,9 @@ const BuyerBooked = () => {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th></th>
+                            <th>Location</th>
                             <th>price</th>
-                            <th></th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
