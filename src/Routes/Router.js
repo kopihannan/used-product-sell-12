@@ -8,6 +8,7 @@ import Signup from "../components/Authentication/Signup/Signup";
 import BuyerBooked from "../components/BuyerBooked/BuyerBooked";
 import CategoryByProducts from "../components/container/Home/Catagories/CategoryByProducts/CategoryByProducts";
 import Home from "../components/container/Home/Home";
+import Error from "../components/ErrorPage/Error";
 import ManageProduct from "../components/ManageProduct/ManageProduct";
 import Payment from "../components/Payment/Payment";
 import Root from "../components/Root/Root";
@@ -18,6 +19,7 @@ import SellerRouter from "../PrivateRoutes/SellerRouter";
 const router = createBrowserRouter([
     {
         path: '/', element: <Root></Root>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/', element: <Home></Home>
