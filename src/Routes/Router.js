@@ -38,7 +38,7 @@ const router = createBrowserRouter([
 
 
             {
-                path: '/admin', element: <MainAdmin></MainAdmin>,
+                path: '/admin', element: <PrivateRouter><MainAdmin></MainAdmin></PrivateRouter>,
                 children: [
                     {
                         path: '/admin/user', element: <AdminRouter><Users></Users></AdminRouter>
@@ -64,5 +64,6 @@ const router = createBrowserRouter([
         ]
     }
 ])
+
 
 export default router;

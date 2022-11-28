@@ -23,7 +23,22 @@ const BuyerBookCard = ({ seller, handleDelete }) => {
             </td>
             <td>{price}</td>
             <th>
-                <Link to={`/admin/payment/${_id}`} className="btn btn-accent btn-sm">Pay</Link>
+                {/* <Link to={`/admin/payment/${_id}`} className="btn btn-accent btn-sm">Pay</Link> */}
+
+
+                {
+                                        seller.price && !seller.paid && <Link
+                                            to={`/admin/payment/${_id}`}
+                                        >
+                                            <button
+                                                className='btn bg-orange-500 border-none btn-sm'
+                                            >Payment</button>
+                                        </Link>
+                                    }
+                                    {
+                                        seller.price && seller.paid && <span className='text-green-600 font-bold'>paid success</span>
+                                    }
+
             </th>
         </tr>
     );

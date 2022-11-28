@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
-import AdminProvier from '../../AllHocks/AdminProvier';
+import useAdmin from '../../AllHocks/useAdmin';
 import SellerProvider from '../../AllHocks/SellerProvider/SellerProvider';
 
 const Navbar = () => {
     const { user } = useContext(AuthContext);
-    const [isAdmin] = AdminProvier(user?.email);
+    const [isAdmin] = useAdmin(user?.email);
     const [isType] = SellerProvider(user?.email)
 
 

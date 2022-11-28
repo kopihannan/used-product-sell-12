@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const AdminProvier = (email) => {
+const useAdmin = (email) => {
     const [isAdmin, setIsAdmin] = useState(false);
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
@@ -16,4 +16,4 @@ const AdminProvier = (email) => {
     return [isAdmin, isAdminLoading]
 };
 
-export default AdminProvier;
+export default useAdmin;

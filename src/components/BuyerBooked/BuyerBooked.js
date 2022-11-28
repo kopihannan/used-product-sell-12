@@ -15,9 +15,6 @@ const BuyerBooked = () => {
             return data;
         }
     })
-    // if (isLoading) {
-    //     return <Spinner></Spinner>
-    // }
 
     return (
         <div>
