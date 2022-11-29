@@ -18,7 +18,7 @@ const Advertise = () => {
     return (
         <div className='my-20'>
             <h1 className='font-bold text-4xl text-center mb-10 text-orange-500'>Advertising</h1>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mx-auto'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 w-full mx-auto justify-center items-center gap-6'>
                 {
                     advertise.map(ads => <AdvertiseCard ads={ads}
                         key={ads._id} >

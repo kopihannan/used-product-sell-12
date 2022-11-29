@@ -36,8 +36,6 @@ const Signup = () => {
                     })
             })
             .catch((error) => {
-                toast.error("Registation failed")
-
             });
     }
 
@@ -50,7 +48,6 @@ const Signup = () => {
                 toast.success("Registation Successfull")
             })
             .catch(error => {
-                toast.error("Registation failed")
             })
     }
 

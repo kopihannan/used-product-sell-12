@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import logo from '../../../assets/image/logo.png'
 
 const Header = () => {
     const { user, userLogout } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const Header = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-200 py-6">
+            <div className="navbar shadow bg-gray-50 py-6">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -27,20 +28,28 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link className='font-semibold' to='/'>Home</Link></li>
+                            <li><Link className='font-semibold' to='/admin'>Dashboard</Link></li>
+                            <li><Link className='font-semibold' to='/blog'>Blog</Link></li>
+
                             {
-                                user?.uid? <button onClick={hangleLogout}  className='font-semibold btn btn-outline'>Logout</button> : <li><Link className='font-semibold btn btn-outline' to='/login'>Login</Link></li>
+                                user?.uid ? <button onClick={hangleLogout} className='font-semibold btn btn-outline'>Logout</button> : <li><Link className='font-semibold btn btn-outline' to='/login'>Login</Link></li>
                             }
                         </ul>
                     </div>
-                    <Link to='/' className="text-[#E14D2A] text-2xl font-bold">Quicker</Link>
+                    <div className='flex'>
+                        <img className='w-9 h-9 mr-3' src={logo} alt="" />
+                        <Link to='/' className="text-[#E14D2A] text-2xl font-bold">Quicker</Link>
+
+                    </div>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
                         <li><Link className='font-semibold' to='/'>Home</Link></li>
                         <li><Link className='font-semibold' to='/admin'>Dashboard</Link></li>
-                        
+                        <li><Link className='font-semibold' to='/blog'>Blog</Link></li>
+
                         {
-                            user?.uid? <button onClick={hangleLogout}  className='font-semibold btn btn-outline'>Logout</button> : <li><Link className='font-semibold btn btn-outline' to='/login'>Login</Link></li>
+                            user?.uid ? <button onClick={hangleLogout} className='font-semibold btn btn-outline'>Logout</button> : <li><Link className='font-semibold btn btn-outline' to='/login'>Login</Link></li>
                         }
                     </ul>
                 </div>

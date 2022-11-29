@@ -12,7 +12,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-orange-100 py-4">
+            <div className="navbar bg-orange-50 py-4">
                 <div className="flex-1">
                     <h1 className="btn btn-ghost normal-case text-xl">Hi! {user?.displayName}</h1 >
                 </div>
@@ -22,19 +22,20 @@ const Navbar = () => {
 
                         {
                             isAdmin && <>
-                                <li><Link to='/admin/user' className='btn btn-accent rounded-md'>All Users</Link></li>
+                                <li><Link to='/admin/user' className='bg-orange-500 hover:bg-orange-600 font-semibold text-white rounded-md mr-5'>All Buyer</Link></li>
+                                <li><Link to='/admin/allseller' className='bg-orange-500 hover:bg-orange-600 font-semibold text-white rounded-md mr-5'>All Seller</Link></li>
                             </>
                         }
 
                         {
                             isType && <>
-                                <li><Link to='/admin/addproduct' className='btn btn-accent rounded-md'>Add Product</Link></li>
-                                <li><Link to='/admin/manageproduct' className='btn btn-accent rounded-md ml-5'>Manage Product</Link></li>
+                                <li><Link to='/admin/addproduct' className='bg-orange-500 hover:bg-orange-600 font-semibold text-white rounded-md'>Add Product</Link></li>
+                                <li><Link to='/admin/manageproduct' className='bg-orange-500 hover:bg-orange-600 font-semibold text-white rounded-md ml-5'>Manage Product</Link></li>
 
                             </>
                         }
                         {
-                            !isType && <li><Link to='/admin/myorder' className='btn btn-accent rounded-md'>My Orders</Link></li>
+                            !isType && <li><Link to='/admin/myorder' className='bg-orange-500 hover:bg-orange-600 font-semibold text-white rounded-md'>My Orders</Link></li>
                         }
                     </ul>
                 </div>

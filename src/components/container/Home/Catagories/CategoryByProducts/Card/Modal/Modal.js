@@ -18,7 +18,6 @@ const Modal = ({ booking, setBooking }) => {
         const locationCustomer = form.locationCustomer.value;
 
         form.reset()
-        toast.success("success")
 
         const booked = {
             email,
@@ -42,7 +41,7 @@ const Modal = ({ booking, setBooking }) => {
             console.log(data);
             if (data.acknowledged) {
                 setBooking(null);
-                toast.success('Booking Successfull');
+                toast.success("Booking Success")
             }
             else {
                 toast.error(data.message);
