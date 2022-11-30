@@ -18,7 +18,8 @@ const Payment = () => {
         return <Spinner></Spinner>
     }
     
-    const { productName, price, image, } = booking;
+    const { productName, price, image, _id } = booking;
+    console.log(_id);
     return (
         <div className='w-2/4 m-10 p-10 mx-auto bg-slate-100 rounded-md'>
             <div className='flex justify-center items-center'>

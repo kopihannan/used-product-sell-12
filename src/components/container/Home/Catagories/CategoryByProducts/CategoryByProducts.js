@@ -1,31 +1,40 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData, useParams } from 'react-router-dom';
 import Card from './Card/Card';
 import Modal from './Card/Modal/Modal';
 
 const CategoryByProducts = () => {
-    const data = useLoaderData();
+    // const data = useLoaderData();
     const [booking, setBooking] = useState(null);
+    const [data, setData] = useState([]);
 
-    
+    const category = useParams();
+    console.log(category);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/categorie/${category.category}`)
+        .then(res => res.json())
+        .then(data => setData(data))
+ }, [data])
+
 
     return (
         <div>
-            <div className='grid lg:grid-cols-2 grid-cols-1 gap-6'>
-            {
-                data.map(product => <Card product={product} key={product._id}
-                setBooking={setBooking}>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6'>
+                {
+                    data.map(product => <Card product={product} key={product._id}
+                        setBooking={setBooking}>
 
-                </Card>)
-                 
-            }
-        </div>
+                    </Card>)
+
+                }
+            </div>
             {
-                booking && 
+                booking &&
                 <Modal setBooking={setBooking} booking={booking}></Modal>
             }
         </div>
-          
+
     );
 };
 

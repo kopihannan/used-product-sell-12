@@ -4,16 +4,17 @@ import toast from 'react-hot-toast';
 
 const Users = () => {
     const { data: user = [], refetch } = useQuery({
-        queryKey: ['user'],
+        queryKey: ['user', ],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/user/buyer');
+            const res = await fetch(`http://localhost:5000/users/buyer`);
             const data = await res.json();
             return data;
         }
     });
 
-    const handleVerified = id => {
-        fetch(`http://localhost:5000/user/admin/${id}`, {
+    const handleVerified = email => {
+        console.log(email);
+        fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -66,9 +67,9 @@ const Users = () => {
                                     <td>{users.email}</td>
                                     <td>{users.select}</td>
                                     <td>
-                                        {users?.isVerified !== 'verified' && <button onClick={() => handleVerified(users._id)} className='bg-orange-500 py-1 px-2 hover:bg-orange-700 rounded-md font-medium text-white'>Pending</button>}
+                                        {users?.isVerified !== true && <button onClick={() => handleVerified(users.email)} className='bg-orange-500 py-1 px-2 hover:bg-orange-700 rounded-md font-medium text-white'>Pending</button>}
                                         {
-                                            users?.isVerified === 'verified' && <p className='font-bold text-green-600'>Verified</p>
+                                            users?.isVerified === true && <p className='font-bold text-green-600'>Verified</p>
                                         }
                                     </td>
                                     <td>

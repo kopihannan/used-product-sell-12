@@ -6,18 +6,22 @@ const AllSeller = () => {
     const { data: user = [], refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/user/seller');
+            const res = await fetch(`http://localhost:5000/users/seller`);
             const data = await res.json();
             return data;
         }
     });
 
-    const handleVerified = id => {
-        fetch(`http://localhost:5000/user/admin/${id}`, {
+    console.log(user);
+
+    const handleVerified = email => {
+        console.log(email);
+        fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 if (data.modifiedCount > 0) {
                     toast.success('Make verified successful.')
                     refetch();
@@ -66,9 +70,9 @@ const AllSeller = () => {
                                     <td>{users.email}</td>
                                     <td>{users.select}</td>
                                     <td>
-                                        {users?.isVerified !== 'verified' && <button onClick={() => handleVerified(users._id)} className='bg-orange-500 py-1 px-2 hover:bg-orange-700 rounded-md font-medium text-white'>Pending</button>}
+                                        {users?.isVerified !== true && <button onClick={() => handleVerified(users.email)} className='bg-orange-500 py-1 px-2 hover:bg-orange-700 rounded-md font-medium text-white'>Pending</button>}
                                         {
-                                            users?.isVerified === 'verified' && <p className='font-bold text-green-600'>Verified</p>
+                                            users?.isVerified === true && <p className='font-bold text-green-600'>Verified</p>
                                         }
                                     </td>
                                     <td>

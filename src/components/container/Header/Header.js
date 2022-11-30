@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import logo from '../../../assets/image/logo.png'
@@ -32,7 +32,7 @@ const Header = () => {
                             <li><Link className='font-semibold' to='/blog'>Blog</Link></li>
 
                             {
-                                user?.uid ? <button onClick={hangleLogout} className='font-semibold btn btn-outline'>Logout</button> : <li><Link className='font-semibold btn btn-outline' to='/login'>Login</Link></li>
+                                user?.uid ? <button onClick={hangleLogout} className='font-semibold bg-orange-500 hover:bg-orange-700 text-white rounded-full px-9'>Logout</button> : <li><Link className='font-semibold bg-orange-500 hover:bg-orange-700 text-white rounded-full px-9' to='/login'>Login</Link></li>
                             }
                         </ul>
                     </div>
@@ -49,7 +49,7 @@ const Header = () => {
                         <li><Link className='font-semibold' to='/blog'>Blog</Link></li>
 
                         {
-                            user?.uid ? <button onClick={hangleLogout} className='font-semibold btn btn-outline'>Logout</button> : <li><Link className='font-semibold btn btn-outline' to='/login'>Login</Link></li>
+                            user?.uid ? <button onClick={hangleLogout} className='font-semibold bg-orange-500 hover:bg-orange-700 text-white rounded-full px-9'>Logout</button> : <li><Link className='font-semibold bg-orange-500 hover:bg-orange-700 text-white rounded-full px-9' to='/login'>Login</Link></li>
                         }
                     </ul>
                 </div>

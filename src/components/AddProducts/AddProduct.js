@@ -1,22 +1,24 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import VerifySeller from '../AllHocks/SellerProvider/VerifySeller';
+import imageUpload from '../ImageHook/uploadImage';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
     const [isVerify] = VerifySeller(user?.email);
 
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
 
     const handleAddProduct = (e) => {
         e.preventDefault()
         const form = e.target;
         const title = form.title.value;
         const sellername = form.sellername.value;
-        const image = form.image.value;
+        const images = form.image.files[0];
         const location = form.location.value;
         const resalePrice = form.resalePrice.value;
         const orginalPrice = form.orginalPrice.value;
@@ -28,15 +30,26 @@ const AddProduct = () => {
         const number = form.number.value;
         const message = form.message.value;
 
-        products(sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify);
-        form.reset();
-        toast.success("Add Product Succesfully")
-        navigate('/admin/manageproduct')
+
+
+        imageUpload(images).then(rss => {
+            const image = rss.data.display_url;
+            form.reset();
+            toast.success("Add Product Succesfully")
+            navigate('/admin/manageproduct')
+
+            products(sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify);
+        })
+
+
+
+
+
     }
 
 
     const products = (sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify) => {
-        const products = { sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify};
+        const products = { sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify };
         fetch('http://localhost:5000/categorie', {
 
             method: 'POST',
@@ -59,7 +72,6 @@ const AddProduct = () => {
                 <input required disabled name='sellername' type="text" placeholder="Product Name" className="input input-bordered w-full mb-3" defaultValue={user?.displayName} />
                 <input name='title' type="text" required placeholder="Product Name" className="input input-bordered w-full mb-3" />
                 <input name='number' type="number" required placeholder="Your mobile number" className="input input-bordered w-full mb-3" />
-                <input name='image' type="text" required placeholder="Image URL" className="input input-bordered w-full mb-3" />
                 <input name='location' type="text" required placeholder="Location" className="input input-bordered w-full  mb-3" />
                 <input name='resalePrice' type="number" required placeholder="resale price" className="input input-bordered w-full  mb-3" />
                 <input name='orginalPrice' type="number" required placeholder="original price" className="input input-bordered w-full  mb-3" />
@@ -82,6 +94,7 @@ const AddProduct = () => {
                 </div>
                 <input className='input input-bordered w-full  mb-3' required placeholder='date and time' name='postedAgo' type="datetime-local" />
                 <textarea name='message' className="textarea w-full textarea-bordered" placeholder="Type product details"></textarea>
+                <input name='image' type="file" required className="w-full my-5" />
                 <button className='w-full bg-green-500 py-2 rounded text-white font-bold hover:bg-green-600' type="submit">Add Product</button>
             </div>
         </form>

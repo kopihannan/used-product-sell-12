@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/categorie/:category', element: <PrivateRouter><CategoryByProducts></CategoryByProducts></PrivateRouter>,
-                loader: ({ params }) => fetch(`http://localhost:5000/categorie/${params.category}`),
+                // loader: ({ params }) => fetch(`http://localhost:5000/categorie/${params.category}`),
             },
             {
                 path: '/ads', element: <Advertise></Advertise>

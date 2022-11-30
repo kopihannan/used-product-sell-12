@@ -4,7 +4,6 @@ import toast from 'react-hot-toast';
 
 const CheckoutForm = ({ booking }) => {
 
-    console.log(booking);
 
     const stripe = useStripe();
     const elements = useElements();
@@ -12,12 +11,12 @@ const CheckoutForm = ({ booking }) => {
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
-    const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
 
     console.log(clientSecret);
 
     const { price, userName, email, _id } = booking;
+
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads

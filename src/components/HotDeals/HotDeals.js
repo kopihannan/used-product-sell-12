@@ -6,10 +6,10 @@ const HotDeals = () => {
     return (
         <div>
             <div>
-                <h1 className='font-bold text-4xl text-orange-500 text-center my-20'>Hot Deals</h1>
+                <h1 className='font-bold text-3xl text-orange-500 text-center my-20'>Hot Deals</h1>
             </div>
             <div>
-                <div className="hero min-h-screen bg-base-200">
+                <div className="hero min-h-screen bg-base-200 rounded-md">
                     <div className="hero-content flex-col lg:flex-row w-full">
                         <div className='lg:w-1/2 md:w-1/2 w-full'>
                             <div className='w-full  flex justify-center text-center'>

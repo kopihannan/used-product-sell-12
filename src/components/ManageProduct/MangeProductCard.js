@@ -2,14 +2,13 @@ import React from 'react';
 
 const MangeProductCard = ({ seller, handleDelete, handleAdvertise }) => {
     const { image, resalePrice, title, _id } = seller;
-    console.log(seller);
     return (
             <tr>
                 <td>
                     <div className="flex items-center space-x-3">
                         <div className="avatar">
                             <div className="mask mask-squircle w-24 h-24">
-                                <img src={image} alt="Avatar Tailwind CSS Component" />
+                                <img src={image} alt="" />
                             </div>
                         </div>
                         <div>
