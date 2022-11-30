@@ -1,7 +1,8 @@
 import React from 'react';
 
 const MangeProductCard = ({ seller, handleDelete, handleAdvertise }) => {
-    const { image, resalePrice, title, _id } = seller;
+    const { image, resalePrice, title, _id, transactionId } = seller;
+    console.log(seller);
     return (
             <tr>
                 <td>
@@ -16,7 +17,7 @@ const MangeProductCard = ({ seller, handleDelete, handleAdvertise }) => {
                         </div>
                     </div>
                 </td>
-                <td>unsold</td>
+                <td>{transactionId ? "sold" : "unsold"}</td>
                 <td>{resalePrice}</td>
                 <th>
                     <button onClick={()=> handleAdvertise (seller)} className="btn btn-success hover:bg-green-700 text-white btn-xs">Advertise</button>

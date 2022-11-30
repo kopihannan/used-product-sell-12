@@ -7,7 +7,6 @@ import imageUpload from '../ImageHook/uploadImage';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext);
-    const [isVerify] = VerifySeller(user?.email);
 
 
     const navigate = useNavigate();
@@ -38,7 +37,7 @@ const AddProduct = () => {
             toast.success("Add Product Succesfully")
             navigate('/admin/manageproduct')
 
-            products(sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify);
+            products(sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message);
         })
 
 
@@ -48,8 +47,8 @@ const AddProduct = () => {
     }
 
 
-    const products = (sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify) => {
-        const products = { sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message, isVerify };
+    const products = (sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message) => {
+        const products = { sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message };
         fetch('http://localhost:5000/categorie', {
 
             method: 'POST',
