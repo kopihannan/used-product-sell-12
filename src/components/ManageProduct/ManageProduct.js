@@ -12,7 +12,7 @@ const ManageProduct = () => {
     const { data: sellers = [], refetch, isLoading } = useQuery({
         queryKey: ['user?.email',],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/categorie/category/${user?.email}`);
+            const res = await fetch(`https://quicker-seven.vercel.app/categorie/category/${user?.email}`);
             const data = await res.json();
             return data
         }
@@ -27,7 +27,7 @@ const ManageProduct = () => {
         const confirm = window.confirm("Are you sure you want to delete your review?");
         if (confirm) {
 
-            fetch(`http://localhost:5000/categorie/category/${id}`, {
+            fetch(`https://quicker-seven.vercel.app/categorie/category/${id}`, {
                 method: 'DELETE',
 
             })
@@ -49,7 +49,7 @@ const ManageProduct = () => {
             title
         }
 
-        fetch('http://localhost:5000/ads', {
+        fetch('https://quicker-seven.vercel.app/ads', {
 
             method: 'PUT',
             headers: {

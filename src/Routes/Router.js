@@ -34,7 +34,6 @@ const router = createBrowserRouter([
             },
             {
                 path: '/categorie/:category', element: <PrivateRouter><CategoryByProducts></CategoryByProducts></PrivateRouter>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/categorie/${params.category}`),
             },
             {
                 path: '/ads', element: <Advertise></Advertise>
@@ -65,7 +64,7 @@ const router = createBrowserRouter([
 
                     {
                         path: '/admin/payment/:id', element: <Payment></Payment>,
-                        loader: ({params})=> fetch(`http://localhost:5000/booking/${params.id}`)
+                        loader: ({params})=> fetch(`https://quicker-seven.vercel.app/booking/${params.id}`)
                     }
     
                 ]

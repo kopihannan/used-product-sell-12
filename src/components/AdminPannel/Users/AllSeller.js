@@ -6,7 +6,7 @@ const AllSeller = () => {
     const { data: user = [], refetch } = useQuery({
         queryKey: ['user'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/seller`);
+            const res = await fetch(`https://quicker-seven.vercel.app/users/seller`);
             const data = await res.json();
             return data;
         }
@@ -16,7 +16,7 @@ const AllSeller = () => {
 
     const handleVerified = email => {
         console.log(email);
-        fetch(`http://localhost:5000/user/admin/${email}`, {
+        fetch(`https://quicker-seven.vercel.app/user/admin/${email}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -34,7 +34,7 @@ const AllSeller = () => {
 
         const confirm = window.confirm("Are you sure delete this account")
         if (confirm) {
-            fetch(`http://localhost:5000/user/${id}`, {
+            fetch(`https://quicker-seven.vercel.app/user/${id}`, {
                 method: "DELETE"
             }).then(rel => rel.json()).then(data => {
                 if (data.deletedCount > 0) {

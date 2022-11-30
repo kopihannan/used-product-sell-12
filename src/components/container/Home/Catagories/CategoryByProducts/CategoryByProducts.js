@@ -12,7 +12,7 @@ const CategoryByProducts = () => {
     console.log(category);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/categorie/${category.category}`)
+        fetch(`https://quicker-seven.vercel.app/categorie/${category.category}`)
         .then(res => res.json())
         .then(data => setData(data))
  }, [data])

@@ -8,7 +8,7 @@ const Catagories = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categorie')
+        fetch('https://quicker-seven.vercel.app/categorie')
             .then(rel => rel.json())
             .then(data => setCategories(data))
     }, [])

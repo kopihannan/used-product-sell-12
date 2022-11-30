@@ -30,7 +30,7 @@ const Modal = ({ booking, setBooking }) => {
 
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://quicker-seven.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

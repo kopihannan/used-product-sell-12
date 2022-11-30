@@ -49,7 +49,7 @@ const AddProduct = () => {
 
     const products = (sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message) => {
         const products = { sellername, title, image, postedAgo, email, location, resalePrice, orginalPrice, yearOfUse, category, condition, number, message };
-        fetch('http://localhost:5000/categorie', {
+        fetch('https://quicker-seven.vercel.app/categorie', {
 
             method: 'POST',
             headers: {
