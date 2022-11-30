@@ -6,7 +6,7 @@ const Banner = () => {
     return (
         <div>
             <div className="hero">
-                <div style={{ backgroundImage: `url(${bg})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }} className="hero-content flex-col lg:flex-row-reverse justify-between">
+                <div style={{ backgroundImage: `url(${bg})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'cover' }} className="hero-content flex-col md:flex-row-reverse  lg:flex-row-reverse justify-between">
                     <img src={image} alt='' />
                     <div className='lg:w-1/2 md:w-1/2 lg:bg-transparent w-full bg-white'>
                         <h1 style={{fontFamily: 'monospace'}} className="text-6xl font-bold text-[#a52306]">Quicker Best Laptop Shop</h1>
